@@ -13,10 +13,10 @@ RUN python model_training.py
 
 FROM base AS serving
 
-COPY --from=model_training /app/my_model.keras .
+COPY --from=model_training /app/wine_model.joblib .
+COPY --from=model_training /app/metrics.json .
 COPY src/main.py .
 COPY src/templates/ ./templates/
-COPY src/statics/ ./statics/
 
 EXPOSE 4000
 
